@@ -11,7 +11,7 @@ const Footer = () => {
       <div className=" flex justify-between flex-col md:flex-row gap-4 w-full">
         <div>
           <p className=" text-pryColor">Navigation</p>
-          <ul className="grid grid-cols-3 text-xs md:mt-4 footer-navLinks md:text-sm truncate w-full md:grid-cols-1 text-white uppercase font-Karla font-bold">
+          <ul className="grid grid-cols-3 gap-2 text-xs md:mt-4 footer-navLinks md:text-sm truncate w-full md:grid-cols-1 text-white uppercase font-Karla font-bold">
             <li>
               <a href="">Home</a>
             </li>

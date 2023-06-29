@@ -7,7 +7,7 @@ const SpecialDish = () => {
     <div className=" grid md:grid-cols-3 md:mt-11 gap-8 mt-6">
       {SpecialDishes.map((special) => (
         <div>
-          <div className=" w-[234px] hidden md:block">
+          <div key={special.id} className=" w-[234px] hidden md:block">
             <img src={special.image} alt="" />
             <div className="bg-[#EDEFEE] py-6 px-4 max-h-[243px] rounded-b-lg">
               <span className="flex items-center justify-between mb-5">
@@ -28,7 +28,7 @@ const SpecialDish = () => {
               </span>
             </div>
           </div>
-          <div className=" bg-[#EDEFEE] w-full md:hidden">
+          <div  className=" bg-[#EDEFEE] w-full md:hidden">
             <div className=" py-2 px-4 flex gap-4 items-center justify-center">
               <span className="flex  flex-col mb-5">
                 <h5 className=" font-bold markazi text-[18px]">

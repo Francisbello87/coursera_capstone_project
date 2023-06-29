@@ -5,6 +5,7 @@
 
 :root {
   --primary-color: #495e57;
+  --primary-color2: #F4CE14;
 }
 
 @font-face {
@@ -32,6 +33,36 @@
   margin-top: 0;
 }
 
+.footer-navLinks li:hover{
+  color: var(--primary-color2);
+}
 nav {
   position: fixed;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

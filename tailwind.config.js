@@ -11,6 +11,7 @@ export default {
         primaryColor: "#495E57",
         pryColor: "#F4CE14",
         priceColor: "#EE9972",
+        secondaryColor: "#EDEFEE",
       },
     },
   },

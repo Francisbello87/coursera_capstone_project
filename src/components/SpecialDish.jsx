@@ -1,13 +1,14 @@
 import React from "react";
 import { SpecialDishes } from "../utils/data";
 import { MdDeliveryDining } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const SpecialDish = () => {
   return (
     <div className=" grid md:grid-cols-3 md:mt-11 gap-8 mt-6">
-      {SpecialDishes.map((special) => (
-        <div>
-          <div key={special.id} className=" w-[234px] hidden md:block">
+      {SpecialDishes.map((special, index) => (
+        <div key={special.id}>
+          <div  className=" w-[234px] hidden md:block">
             <img src={special.image} alt="" />
             <div className="bg-[#EDEFEE] py-6 px-4 max-h-[243px] rounded-b-lg">
               <span className="flex items-center justify-between mb-5">

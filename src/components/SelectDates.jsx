@@ -1,36 +1,55 @@
-import React from 'react'
+import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedOption } from "../redux/dropDownSlice";
 
 const SelectDates = () => {
-    const generateDates = () => {
-        const startDate = new Date();
-        const dates = [];
-    
-        for (let i = 0; i < 10; i++) {
-          const currentDate = new Date();
-          currentDate.setDate(startDate.getDate() + i);
-          dates.push(currentDate.toDateString());
-        }
-    
-        return dates;
-      };
+  const selectedOption = useSelector((state) => state.dropDown);
+  const dispatch = useDispatch();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-      const renderOptions = () => {
-        const dates = generateDates();
-    
-        return dates.map((date, index) => (
-          <option key={index} value={date}>
-            {date}
-          </option>
-        ));
-      };
+  const handleOptionChange = (event) => {
+    dispatch(setSelectedOption(event.target.value));
+  };
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+
   return (
     <div>
-       <select className=' w-[200px] py-4 px-4  outline-none cursor-pointer rounded-md'>
-        <option value="">Select a date</option>
-        {renderOptions()}
-      </select>
+      <h1>Dropdown Example</h1>
+      {/* <input type="date" value={selectedOption} onChange={handleOptionChange} />
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "10px",
+          backgroundColor: selectedOption ? "green" : "default",
+        }}
+      >
+        You selected: {selectedOption || "No option selected"}
+      </div> */}
+      <div onClick={handleDropdownToggle}>
+        <span>{selectedOption || "Select a date"}</span>
+        {isDropdownOpen && (
+          <input
+            type="date"
+            value={selectedOption}
+            onChange={handleOptionChange}
+          />
+        )}
+      </div>
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "10px",
+          backgroundColor: selectedOption ? "green" : "default",
+        }}
+      >
+        You selected: {selectedOption || "No option selected"}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SelectDates
+export default SelectDates;

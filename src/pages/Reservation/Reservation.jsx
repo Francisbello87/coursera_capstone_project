@@ -1,42 +1,47 @@
-import React from "react";
+import React, {useState} from "react";
 import Nav from "../../components/Nav";
 import SelectDates from "../../components/SelectDates";
 import { images } from "../../constants";
 import SelectButton from "../../components/SelectButton";
 
 const Reservation = () => {
-  const generateTimeOptions = () => {
-    const options = [];
+  // const [selectedDate, setSelectedDate] = useState(null);
 
-    for (let hour = 0; hour < 24; hour++) {
-      for (let minute = 0; minute < 60; minute += 15) {
-        const formattedHour = hour.toString().padStart(2, '0');
-        const formattedMinute = minute.toString().padStart(2, '0');
-        const time = `${formattedHour}:${formattedMinute}`;
-        options.push(time);
-      }
-    }
+  // const handleDateChange = (event) => {
+  //   setSelectedDate(event.target.value);
+  // };
+  // const generateTimeOptions = () => {
+  //   const options = [];
 
-    return options;
-  };
-  const handleTimeSelect = (selectedTime) => {
-    console.log('Selected time:', selectedTime);
-  };
+  //   for (let hour = 0; hour < 24; hour++) {
+  //     for (let minute = 0; minute < 60; minute += 15) {
+  //       const formattedHour = hour.toString().padStart(2, "0");
+  //       const formattedMinute = minute.toString().padStart(2, "0");
+  //       const time = `${formattedHour}:${formattedMinute}`;
+  //       options.push(time);
+  //     }
+  //   }
 
-  const startTime = new Date(); 
-  const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000); 
-  const interval = 15; 
-  const label = "Time"
-  
-  const renderOptions = () => {
-    const timeOptions = generateTimeOptions();
+  //   return options;
+  // };
+  // const handleTimeSelect = (selectedTime) => {
+  //   console.log("Selected time:", selectedTime);
+  // };
 
-    return timeOptions.map((time, index) => (
-      <option key={index} value={time}>
-        {time}
-      </option>
-    ));
-  };
+  // const startTime = new Date();
+  // const endTime = new Date(startTime.getTime() + 2 * 60 * 60 * 1000);
+  // const interval = 15;
+  // const label = "Time";
+
+  // const renderOptions = () => {
+  //   const timeOptions = generateTimeOptions();
+
+  //   return timeOptions.map((time, index) => (
+  //     <option key={index} value={time}>
+  //       {time}
+  //     </option>
+  //   ));
+  // };
   return (
     <div className="bg-primaryColor h-[100vh] w-full">
       <Nav />
@@ -56,13 +61,15 @@ const Reservation = () => {
         <div className=" flex items-center justify-between w-full gap-5 mt-11">
           <div className=" bg-secondaryColor py-14 px-12 flex items-center h-[607px] justify-between gap-8 ">
             <SelectDates />
-            <SelectButton
+          
+            {/* {selectedDate && <p>Selected Date: {selectedDate}</p>} */}
+            {/* <SelectButton
               startTime={startTime}
               endTime={endTime}
               interval={interval}
               defaultValue={label}
               onSelect={handleTimeSelect}
-            />
+            /> */}
           </div>
           <div className=" flex flex-col gap-4">
             <img src={images.Outdoor} alt="" />

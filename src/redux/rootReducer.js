@@ -1,7 +1,7 @@
 import dropDown from "./dropDownSlice";
 
-const rootRducer ={
-dropDown
-}
+const rootRducer = {
+  dropDown,
+};
 
-export default rootRducer
+export default rootRducer;

@@ -1,7 +1,7 @@
 
-import AnimatedRoutes from "./components/AnimatedRoutes";
+import AnimatedRoutes from "./components/AnimatedRoutes/AnimatedRoutes";
 import { AnimatePresence } from "framer-motion";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, } from "react-router-dom";
 
 
 function App() {

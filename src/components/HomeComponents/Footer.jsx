@@ -1,5 +1,5 @@
 import React from "react";
-import Logo2 from "../assets/Logo2.png";
+import { images } from "../../constants";
 import { BsFacebook, BsTwitter, BsInstagram } from "react-icons/bs";
 import { motion } from "framer-motion";
 
@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className=" px-4 md:px-72 py-12 bg-primaryColor flex md:gap-20 items-center justify-between">
       <div>
-        <img className="w-[87px] md:[132px]" src={Logo2} alt="" />
+        <img className="w-[87px] md:[132px]" src={images.Logo2} alt="Logo 2" />
       </div>
       <div className=" flex justify-between flex-col md:flex-row gap-4 w-full">
         <div>
@@ -46,13 +46,13 @@ const Footer = () => {
           <p className=" text-pryColor">Social Media Links</p>
           <div className=" flex items-center w-[50%] md:w-[80%] mt-2 justify-between">
             <motion.span whileTap={{scale: 1.1}}>
-              <BsFacebook className=" text-lg md:text-2xl hover:text-[#4267B2] cursor-pointer " />
+              <BsFacebook className=" text-lg md:text-2xl hover:text-facebookColor cursor-pointer " />
             </motion.span>
             <motion.span whileTap={{scale: 1.1}}>
-              <BsTwitter className=" text-lg md:text-2xl hover:text-[#1DA1F2] cursor-pointer " />
+              <BsTwitter className=" text-lg md:text-2xl hover:text-twitterColor cursor-pointer " />
             </motion.span>
             <motion.span whileTap={{scale: 1.1}}>
-              <BsInstagram className=" text-lg md:text-2xl hover:text-[#E1306C] cursor-pointer " />
+              <BsInstagram className=" text-lg md:text-2xl hover:text-instagramColor cursor-pointer " />
             </motion.span>
           </div>
         </div>

@@ -42,7 +42,9 @@
 }
 nav {
   position: fixed;
+  top: 0;
 }
+
 html,
 body {
   position: relative;
@@ -69,4 +71,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.radioBtn {
+  accent-color: var(--primary-color);
 }

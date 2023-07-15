@@ -28,12 +28,12 @@ const TimeDropdown = () => {
   }, [dispatch]);
  
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div onClick={toggleDropdown}>
         <span
           className={`${
             selectedTime ? "bg-primaryColor text-white" : "bg-white"
-          } flex items-center justify-between  rounded-md py-3 text-sm md:text-lg px-3 min-w-[180px]  w-full cursor-pointer`}
+          } flex items-center justify-between  rounded-md py-3 text-sm md:text-lg px-3 w-full cursor-pointer`}
         >
           {selectedTime ? selectedTime : "Select a time"}
           {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}

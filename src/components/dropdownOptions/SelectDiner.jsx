@@ -32,11 +32,11 @@ const SelectDiner = () => {
     }
   }, [dispatch]);
   return (
-    <div className="mb-6 relative">
+    <div className="mb-6 relative ">
       <div
         className={`${
           selectedDiners ? "bg-primaryColor text-white" : "bg-white"
-        } flex items-center justify-between rounded-md py-3 px-3 min-w-[180px] text-sm md:text-lg w-full cursor-pointer`}
+        } flex items-center justify-between rounded-md py-3 px-3 md:min-w-[180px] text-sm md:text-lg w-full cursor-pointer`}
         onClick={toggleDropdown}
       >
         <img src={selectedDiners ?images.people2 : images.people  } alt="" />

@@ -31,18 +31,16 @@ const SelectDates = () => {
   useEffect(() => {
     if (selectedOption) {
       localStorage.setItem("selectedDate", selectedOption.toISOString());
-    } else {
-      localStorage.removeItem("selectedDate");
-    }
+    } 
   }, [selectedOption]);
 
   return (
-    <div className="relative">
-      <div onClick={handleDropdownToggle}>
+    <div className="relative w-full">
+      <div onClick={handleDropdownToggle} >
         <span
           className={`${
             selectedOption ? "bg-primaryColor text-white" : "bg-white"
-          } flex items-center justify-between rounded-md py-3 md:px-3 px-1 text-sm md:text-lg min-w-[180px]  w-full`}
+          } flex items-center justify-between rounded-md py-3 md:px-3 px-1 text-sm md:text-lg   w-full`}
         >
           {selectedOption
             ? format(selectedOption, "dd-MM-yyyy")

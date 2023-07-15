@@ -1,9 +1,7 @@
 import React from 'react'
-import { AnimatePresence } from 'framer-motion'
-import { Route, Routes, useLocation} from 'react-router-dom';
-import Header from '../../components/Header';
-import Main from '../../components/Main';
-import Footer from '../../components/Footer'
+import Header from '../../components/HomeComponents/Header';
+import Main from '../../components/Main/Main';
+import Footer from '../../components/HomeComponents/Footer'
 
 const Home = () => {
   return (

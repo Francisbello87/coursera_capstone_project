@@ -12,6 +12,11 @@ export default {
         pryColor: "#F4CE14",
         priceColor: "#EE9972",
         secondaryColor: "#EDEFEE",
+        brownColor: "#333333",
+        facebookColor: "#4267B2",
+        twitterColor: "#1DA1F2",
+        instagramColor: "#E1306C",
+        yellowColor: "#f6d964"
       },
     },
   },

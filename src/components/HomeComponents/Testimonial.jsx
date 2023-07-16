@@ -3,7 +3,7 @@ import { Testimonials } from "../../utils/data";
 
 const Testimonial = () => {
   return (
-    <div className=" bg-primaryColor w-full font-Karla flex items-center justify-center text-white flex-col py-12 px-4 md:px-72">
+    <div className=" bg-primaryColor w-full font-Karla flex items-center justify-center text-white flex-col py-12 px-4 md:px-64">
       <h3 className="markazi font-bold text-2xl text-center md:text-[2.5rem] ">Testimonials</h3>
       <div className=" flex items-center w-full overflow-x-scroll scrollbar-none gap-4 md:gap-5 md:overflow-x-visible mt-10">
         {Testimonials.map((testimonial, index) => (

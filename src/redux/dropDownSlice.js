@@ -11,7 +11,7 @@ const dropDownSlice = createSlice({
   },
   reducers: {
     setSelectedOption: (state, action) => {
-      state.selectedOption = action.payload; // Update the selectedOption field
+      state.selectedOption = action.payload; 
     },
     setSelectedTime: (state, action) => {
       state.selectedTime = action.payload;

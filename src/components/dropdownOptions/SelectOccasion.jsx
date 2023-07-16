@@ -32,11 +32,11 @@ const SelectOccasion = () => {
     }
   }, [dispatch]);
   return (
-    <div className=" pb-6 relative">
+    <div className="relative">
       <div
         className={`${
           selectedOccasion ? "bg-primaryColor text-white" : "bg-white"
-        } flex items-center justify-between text-sm md:text-lg py-3 rounded-md px-3 min-w-[180px] w-full cursor-pointer`}
+        } flex items-center justify-between  text-sm md:text-lg py-3 rounded-md px-3 min-w-[180px] w-full cursor-pointer`}
         onClick={toggleDropdown}
       >
         <img src={selectedOccasion ? images.cheers : images.cheers2} alt="" />

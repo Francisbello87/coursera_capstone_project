@@ -3,7 +3,7 @@ import { images } from "../../constants";
 
 const About = () => {
   return (
-    <div className=" px-4 md:px-72 py-12">
+    <div className=" px-4 md:px-64 py-12">
       <h3 className="markazi text-primaryColor font-bold text-2xl text-center md:text-[40px] ">
         About
       </h3>

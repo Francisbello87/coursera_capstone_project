@@ -20,12 +20,12 @@ const SelectOptions = () => {
     }
   }, [dispatch]);
   return (
-    <div className=" text-white md:text-black">
+    <div className=" text-white md:text-black mt-6">
       <h4 className=" font-bold markazi md:text-2xl text-2xl">
         Seating options
       </h4>
       <div className=" flex flex-col cursor-pointer">
-        <label className="flex items-center justify-between w-full">
+        <label className="flex items-center justify-between  w-full">
           Standard
           <input
             type="radio"

@@ -8,7 +8,7 @@ const Specials = () => {
     // navigate('/reservations')
   }
   return (
-    <div className=" py-28 md:pt-40 w-full px-4 md:px-72">
+    <div className=" py-28 md:pt-40 w-full px-4 md:px-64">
       <div className="flex items-center justify-between mb-16">
         <h3 className="markazi md:text-[40px] text-[24px] font-semibold">
           This week's specials!

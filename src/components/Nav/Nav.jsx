@@ -12,7 +12,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className=" w-screen z-50  h-[80px] bg-white px-4 md:px-72  flex items-center justify-between">
+    <nav className=" w-screen z-50  h-[80px] bg-white px-4 md:px-64  flex items-center justify-between">
       <FaCartArrowDown className="w-[25px] h-[25px] md:hidden" />
       <a href="">
         <img src={images.Logo} alt="Logo" />

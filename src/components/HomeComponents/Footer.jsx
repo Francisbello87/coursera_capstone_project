@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <div className=" px-4 md:px-72 py-12 bg-primaryColor flex md:gap-20 items-center justify-between">
+    <div className=" px-4 md:px-64 py-12 bg-primaryColor flex md:gap-20 items-center justify-between">
       <div>
         <img className="w-[87px] md:[132px]" src={images.Logo2} alt="Logo 2" />
       </div>

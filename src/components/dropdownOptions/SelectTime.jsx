@@ -29,7 +29,7 @@ const TimeDropdown = () => {
  
   return (
     <div className="relative w-full">
-      <div onClick={toggleDropdown}>
+      <div className="" onClick={toggleDropdown}>
         <span
           className={`${
             selectedTime ? "bg-primaryColor text-white" : "bg-white"
@@ -39,7 +39,7 @@ const TimeDropdown = () => {
           {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}
         </span>
         {isDropdownOpen && (
-          <div className="dropdown absolute z-20 mt-2 bg-white w-full rounded-md shadow-lg max-h-32 overflow-y-auto">
+          <div className="dropdown absolute z-20 mt-2 bg-white w-full rounded-md shadow-lg max-h-40 overflow-y-auto">
             <ul className="time-options py-2 px-3">
               {timeOptions.map((time, index) => (
                 <li

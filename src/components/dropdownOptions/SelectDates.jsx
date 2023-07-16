@@ -36,7 +36,7 @@ const SelectDates = () => {
 
   return (
     <div className="relative w-full">
-      <div onClick={handleDropdownToggle} >
+      <div className="" onClick={handleDropdownToggle} >
         <span
           className={`${
             selectedOption ? "bg-primaryColor text-white" : "bg-white"

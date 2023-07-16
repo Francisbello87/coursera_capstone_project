@@ -32,7 +32,7 @@ const SelectDiner = () => {
     }
   }, [dispatch]);
   return (
-    <div className="mb-6 relative ">
+    <div className="mb-6 relative">
       <div
         className={`${
           selectedDiners ? "bg-primaryColor text-white" : "bg-white"

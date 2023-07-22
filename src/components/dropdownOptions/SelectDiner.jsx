@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedDiners } from "../redux/dropDownSlice";
+import { setSelectedDiners } from "../../redux/dropDownSlice";
 import { FaAngleDown, FaAngleUp,  } from "react-icons/fa";
-import { images } from "../constants";
+import { images } from "../../constants";
 
 
 const SelectDiner = () => {
@@ -26,18 +26,17 @@ const SelectDiner = () => {
   };
 
   useEffect(() => {
-    // Retrieve the selected time from localStorage on component mount
     const storedDiner = localStorage.getItem("selectedDiner");
     if (storedDiner) {
       dispatch( setSelectedDiners (storedDiner));
     }
   }, [dispatch]);
   return (
-    <div className="mb-6">
+    <div className="mb-6 relative ">
       <div
         className={`${
           selectedDiners ? "bg-primaryColor text-white" : "bg-white"
-        } flex items-center justify-between py-3 px-3 min-w-[180px] w-full cursor-pointer`}
+        } flex items-center justify-between rounded-md py-3 px-3 md:min-w-[180px] text-sm md:text-lg w-full cursor-pointer`}
         onClick={toggleDropdown}
       >
         <img src={selectedDiners ?images.people2 : images.people  } alt="" />
@@ -45,11 +44,11 @@ const SelectDiner = () => {
         {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}
       </div>
       {isDropdownOpen && (
-        <div className="mt-2 bg-white">
+        <div className="mt-2 bg-white absolute z-20 w-full">
           {[1, 2, 3, 4, 5].map((diners) => (
             <div
               key={diners}
-              className="py-2 px-3 cursor-pointer hover:bg-secondaryColor"
+              className="py-2 px-3 cursor-pointer hover:bg-secondaryColor border flex items-center justify-center"
               onClick={() => handleDinersChange(diners)}
             >
               {diners}

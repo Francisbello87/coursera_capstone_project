@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedOption } from "../redux/dropDownSlice";
+import { setSelectedOption } from "../../redux/dropDownSlice";
 import { Calendar } from "react-date-range";
-
 import format from "date-fns/format";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -32,28 +31,25 @@ const SelectDates = () => {
   useEffect(() => {
     if (selectedOption) {
       localStorage.setItem("selectedDate", selectedOption.toISOString());
-    } else {
-      localStorage.removeItem("selectedDate");
-    }
+    } 
   }, [selectedOption]);
 
   return (
-    <div className="relative">
-      <div onClick={handleDropdownToggle}>
+    <div className="relative w-full">
+      <div onClick={handleDropdownToggle} >
         <span
           className={`${
             selectedOption ? "bg-primaryColor text-white" : "bg-white"
-          } flex items-center justify-between py-3 px-3 min-w-[180px] w-full`}
+          } flex items-center justify-between rounded-md py-3 md:px-3 px-1 text-sm md:text-lg   w-full`}
         >
           {selectedOption
-            ? format(selectedOption, "dd/MM/yyyy")
+            ? format(selectedOption, "dd-MM-yyyy")
             : "Select a date"}
           {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}
         </span>
-
         {isDropdownOpen && (
           <div className="dropdown">
-            <div className="calendar absolute">
+            <div className="calendar absolute z-20">
               <Calendar
                 onChange={handleOptionChange}
                 date={selectedOption}

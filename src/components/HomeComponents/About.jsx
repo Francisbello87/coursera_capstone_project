@@ -1,6 +1,5 @@
 import React from "react";
-import About1 from "../assets/about1.png"
-import About2 from "../assets/about2.png"
+import { images } from "../../constants";
 
 const About = () => {
   return (
@@ -13,7 +12,7 @@ const About = () => {
           <h1 className=" markazi text-[44px] md:text-[64px] text-pryColor">
             Little Lemon
           </h1>
-          <h4 className="markazi font-semibold text-3xl md:text-[40px] text-[#333333] -mt-4">
+          <h4 className="markazi font-semibold text-3xl md:text-[40px] text-grayColor -mt-4">
             Chicago
           </h4>
           <p className=" font-Karla z-40 font-medium text-sm md:text-[18px] md:max-w-[310px]  mt-5 md:mt-11 text-black">
@@ -22,9 +21,8 @@ const About = () => {
           </p>
           
         </div>
-
         <div className="relative pb-14">
-            <img src={About1} alt="" />
+            <img src={images.About1} alt="" />
         </div>
       </div>
     </div>

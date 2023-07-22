@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../assets/Logo.png";
+import { images } from "../../constants";
 import { FaCartArrowDown } from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,7 +15,7 @@ const Nav = () => {
     <nav className=" w-screen z-50  h-[80px] bg-white px-4 md:px-72  flex items-center justify-between">
       <FaCartArrowDown className="w-[25px] h-[25px] md:hidden" />
       <a href="">
-        <img className=" " src={Logo} alt="Logo" />
+        <img src={images.Logo} alt="Logo" />
       </a>
       <button className=" md:hidden" onClick={handleMenu}>
         {!isMenu ? (

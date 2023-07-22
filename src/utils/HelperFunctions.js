@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export const generateTimeOptions = () => {
   const startTime = new Date();
   startTime.setHours(10, 0, 0); // Start time: 10:00 AM
@@ -18,4 +20,18 @@ export const generateTimeOptions = () => {
   }
 
   return options;
-  };
+};
+
+export const useClickOutside = (ref, callback) => {
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        callback();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, callback]);
+};

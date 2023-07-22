@@ -76,3 +76,23 @@ body {
 .radioBtn {
   accent-color: var(--primary-color);
 }
+.popup {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 9999;
+  animation: fadeInOut 5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+}

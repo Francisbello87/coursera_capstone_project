@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedTime } from "../../redux/dropDownSlice";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { generateTimeOptions } from "../../utils/HelperFunctions";
+import { useClickOutside } from "../../utils/HelperFunctions";
 
 const TimeDropdown = () => {
   const dispatch = useDispatch();
   const selectedTime = useSelector((state) => state.dropDown.selectedTime);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const timeOptions = generateTimeOptions();
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => {
+    setIsDropdownOpen(false);
+  });
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -39,7 +44,7 @@ const TimeDropdown = () => {
           {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}
         </span>
         {isDropdownOpen && (
-          <div className="dropdown absolute z-20 mt-2 bg-white w-full rounded-md shadow-lg max-h-40 overflow-y-auto">
+          <div ref={dropdownRef} className="dropdown absolute z-20 mt-2 bg-white w-full rounded-md shadow-lg max-h-40 overflow-y-auto">
             <ul className="time-options py-2 px-3">
               {timeOptions.map((time, index) => (
                 <li

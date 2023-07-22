@@ -22,6 +22,7 @@ import {
 const Reservation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
 
   const selectedOption = useSelector((state) => state.dropDown.selectedOption);
   const selectedTime = useSelector((state) => state.dropDown.selectedTime);
@@ -38,7 +39,10 @@ const Reservation = () => {
       navigate("/signin");
     } else {
       // Handle case when any of the select components is not filled
-      alert("Please fill all the select components");
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 5000);
     }
   };
   return (
@@ -59,11 +63,9 @@ const Reservation = () => {
         <div className=" flex items-center justify-between flex-col-reverse md:flex-row w-full h-full mt-5 md:overflow-y-hidden">
           <div className="  md:bg-secondaryColor md:py-12 mb-7 md:px-6  w-full md:max-w-[430px]">
             <div className=" flex items-center md:gap-8 gap-2 w-full  mb-6">
-            <SelectDates
+              <SelectDates
                 selectedOption={selectedOption}
-                setSelectedOption={(date) =>
-                  dispatch(setSelectedOption(date))
-                }
+                setSelectedOption={(date) => dispatch(setSelectedOption(date))}
               />
               <SelectTime
                 selectedTime={selectedTime}
@@ -72,7 +74,9 @@ const Reservation = () => {
             </div>
             <SelectDiner
               selectedDiners={selectedDiners}
-              setSelectedDiners={(diners) => dispatch(setSelectedDiners(diners))}
+              setSelectedDiners={(diners) =>
+                dispatch(setSelectedDiners(diners))
+              }
             />
             <SelectOccasion
               selectedOccasion={selectedOccasion}
@@ -105,6 +109,11 @@ const Reservation = () => {
             />
           </div>
         </div>
+        {showPopup && (
+          <div className="popup">
+            <p>Please fill all the select components</p>
+          </div>
+        )}
       </div>
     </div>
   );

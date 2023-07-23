@@ -7,8 +7,8 @@ const Testimonial = () => {
       <h3 className="markazi font-bold text-2xl text-center md:text-[2.5rem] ">Testimonials</h3>
       <div className=" flex items-center w-full overflow-x-scroll scrollbar-none gap-4 md:gap-5 md:overflow-x-visible mt-10">
         {Testimonials.map((testimonial, index) => (
-          <div className=" flex">
-            <div key={index} className="bg-secondaryColor rounded-md drop-shadow-lg min-w-[11.875rem] px-4 py-12">
+          <div key={testimonial.id} className=" flex">
+            <div  className="bg-secondaryColor rounded-md drop-shadow-lg min-w-[11.875rem] px-4 py-12">
               <span className=" flex items-center justify-between gap-3">
                 <img
                   className=" w-14 min-h-[3.8125rem] rounded-md drop-shadow-sm"

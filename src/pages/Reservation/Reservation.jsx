@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../../components/Nav/Nav";
 import { images } from "../../constants";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ import {
   setSelectedOption,
   setSelectedTime,
 } from "../../redux/dropDownSlice";
-
+import { setUser, setError } from "../../redux/authSlice";
 const Reservation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,20 +33,36 @@ const Reservation = () => {
   const radioButtonSelection = useSelector(
     (state) => state.dropDown.radioButtonSelection
   );
+  const user = useSelector((state) => state.auth.user);
 
-  const navigateToSignIn = () => {
-    if (selectedOption && selectedTime && selectedDiners && selectedOccasion) {
-      navigate("/signin");
-    } else {
-      // Handle case when any of the select components is not filled
+  const navigateToConfirmationPage = () => {
+    if (
+      !selectedOption ||
+      !selectedTime ||
+      !selectedDiners ||
+      !selectedOccasion ||
+      !radioButtonSelection
+    ) {
       setShowPopup(true);
       setTimeout(() => {
         setShowPopup(false);
       }, 5000);
+    } else if (user) {
+      navigate("/confirmationpage");
+    } else {
+      navigate("/signin");
     }
   };
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      dispatch(setUser(storedUser));
+    }
+  }, [dispatch]);
+
   return (
-    <div className=" h-full w-full">
+    <div className=" h-screen w-full">
       <Nav />
       <div className=" px-4 md:pt-24 md:px-64 pt-24 bg-brownColor md:bg-primaryColor h-full w-full flex flex-col justify-center">
         <div className="md:hidden mb-5">
@@ -92,7 +108,7 @@ const Reservation = () => {
             />
             <div className="md:text-right flex justify-end w-full mt-8">
               <div className=" md:w-[50%] w-full text-right ">
-                <Button onClick={navigateToSignIn} text="Let's go" />
+                <Button onClick={navigateToConfirmationPage} text="Let's go" />
               </div>
             </div>
           </div>
@@ -111,7 +127,7 @@ const Reservation = () => {
         </div>
         {showPopup && (
           <div className="popup">
-            <p>Please fill all the select components</p>
+            <p>Please fill all details</p>
           </div>
         )}
       </div>

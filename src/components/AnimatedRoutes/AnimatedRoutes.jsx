@@ -1,7 +1,7 @@
 import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
-import {Home, Reservation, SignIn} from "../../pages";
+import {Confirmation, Home, Reservation, SignIn, SignUp} from "../../pages";
 
 
 const AnimatedRoutes = () => {
@@ -12,6 +12,8 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Home/>} />
         <Route path="/reservations" element={<Reservation />} />
         <Route path="/signin" element={<SignIn/>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/confirmationpage" element={<Confirmation/>} />
         </Routes>
     </AnimatePresence>
   );

@@ -1,4 +1,12 @@
 import { useEffect } from "react";
+// import { auth } from "../firebase/firebaseConfig";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "@firebase/auth";
+import { setUser, setError, signOut } from "../redux/authSlice";
+// import { log } from "console";
+
 
 export const generateTimeOptions = () => {
   const startTime = new Date();
@@ -34,4 +42,15 @@ export const useClickOutside = (ref, callback) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, callback]);
+};
+
+export const getInitialsFromDisplayName = (displayName) => {
+  if (displayName) {
+    const fullName = displayName;
+    const [firstName, lastName] = fullName.split(" ");
+    const firstNameInitial = firstName.charAt(0).toUpperCase();
+    const lastNameInitial = lastName.charAt(0).toUpperCase();
+    return firstNameInitial + lastNameInitial;
+  }
+  return "";
 };

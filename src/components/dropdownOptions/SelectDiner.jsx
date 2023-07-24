@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedDiners } from "../../redux/dropDownSlice";
 import { FaAngleDown, FaAngleUp,  } from "react-icons/fa";
 import { images } from "../../constants";
+import { useClickOutside } from "../../utils/HelperFunctions";
 
 
 const SelectDiner = () => {
   const dispatch = useDispatch();
   const selectedDiners = useSelector((state) => state.dropDown.selectedDiners);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => {
+    setIsDropdownOpen(false);
+  });
 
   const handleDinersChange = (diners) => {
     dispatch(setSelectedDiners(diners));
@@ -32,7 +37,7 @@ const SelectDiner = () => {
     }
   }, [dispatch]);
   return (
-    <div className="mb-6 relative ">
+    <div className="mb-6 relative">
       <div
         className={`${
           selectedDiners ? "bg-primaryColor text-white" : "bg-white"
@@ -44,7 +49,7 @@ const SelectDiner = () => {
         {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}
       </div>
       {isDropdownOpen && (
-        <div className="mt-2 bg-white absolute z-20 w-full">
+        <div className="mt-2 bg-white absolute z-20 w-full" ref={dropdownRef}>
           {[1, 2, 3, 4, 5].map((diners) => (
             <div
               key={diners}

@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className=" w-full relative md:h-[38.875rem] bg-primaryColor">
       <Nav />
-      <div className="flex py-28 md:pt-40  md:flex-row justify-between w-full gap-11 px-4 md:px-72">
+      <div className="flex py-28 md:pt-40  md:flex-row justify-between w-full gap-11 px-4 md:px-64">
         <div className=" ">
           <h1 className=" markazi text-[2.75rem] md:text-[4rem] text-pryColor">
             Little Lemon
@@ -25,7 +25,7 @@ const Header = () => {
             We are a family owned Mediterranean restaurant, focused on
             traditional recipes served with a modern twist.
           </p>
-          <div className="md:mt-16 mt-6">
+          <div className="md:mt-16 mt-6 w-[70%]">
             <Button onClick={navigateToReservations} text="Reserve a Table" />
           </div>
         </div>

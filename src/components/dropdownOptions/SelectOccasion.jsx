@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedOccasion } from "../../redux/dropDownSlice";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { images } from "../../constants";
+import { useClickOutside } from "../../utils/HelperFunctions";
 
 const SelectOccasion = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,10 @@ const SelectOccasion = () => {
     (state) => state.dropDown.selectedOccasion
   );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => {
+    setIsDropdownOpen(false);
+  });
 
   const handleOccasionChange = (occasions) => {
     dispatch(setSelectedOccasion(occasions));
@@ -32,11 +37,11 @@ const SelectOccasion = () => {
     }
   }, [dispatch]);
   return (
-    <div className=" pb-6 relative">
+    <div className="relative">
       <div
         className={`${
           selectedOccasion ? "bg-primaryColor text-white" : "bg-white"
-        } flex items-center justify-between text-sm md:text-lg py-3 rounded-md px-3 min-w-[180px] w-full cursor-pointer`}
+        } flex items-center justify-between  text-sm md:text-lg py-3 rounded-md px-3 min-w-[180px] w-full cursor-pointer`}
         onClick={toggleDropdown}
       >
         <img src={selectedOccasion ? images.cheers : images.cheers2} alt="" />
@@ -44,7 +49,7 @@ const SelectOccasion = () => {
         {!isDropdownOpen ? <FaAngleDown /> : <FaAngleUp />}
       </div>
       {isDropdownOpen && (
-        <div className="mt-2 bg-white absolute z-20 w-full">
+        <div className="mt-2 bg-white absolute z-20 w-full" ref={dropdownRef}>
           {["Birthday", "Engagement", "Anniversary", "Graduation"].map(
             (occasions) => (
               <div

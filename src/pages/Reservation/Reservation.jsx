@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../../components/Nav/Nav";
 import { images } from "../../constants";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   SelectDiner,
@@ -10,17 +11,60 @@ import {
   SelectOptions,
 } from "../../components";
 import Button from "../../components/Button/Button";
-
+import {
+  setSelectedDiners,
+  setRadioButtonSelection,
+  setSelectedOccasion,
+  setSelectedOption,
+  setSelectedTime,
+} from "../../redux/dropDownSlice";
+import { setUser, setError } from "../../redux/authSlice";
 const Reservation = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
 
-  const navigateToSignIn = () => {
-    navigate("/signin");
+  const selectedOption = useSelector((state) => state.dropDown.selectedOption);
+  const selectedTime = useSelector((state) => state.dropDown.selectedTime);
+  const selectedDiners = useSelector((state) => state.dropDown.selectedDiners);
+  const selectedOccasion = useSelector(
+    (state) => state.dropDown.selectedOccasion
+  );
+  const radioButtonSelection = useSelector(
+    (state) => state.dropDown.radioButtonSelection
+  );
+  const user = useSelector((state) => state.auth.user);
+
+  const navigateToConfirmationPage = () => {
+    if (
+      !selectedOption ||
+      !selectedTime ||
+      !selectedDiners ||
+      !selectedOccasion ||
+      !radioButtonSelection
+    ) {
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 5000);
+    } else if (user) {
+      navigate("/confirmationpage");
+    } else {
+      navigate("/signin");
+    }
   };
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      dispatch(setUser(storedUser));
+    }
+  }, [dispatch]);
+
   return (
-    <div className=" h-full w-full">
+    <div className=" h-screen w-full">
       <Nav />
-      <div className=" px-4 md:pt-24 md:px-72 pt-24 bg-brownColor md:bg-primaryColor h-full w-full flex flex-col justify-center">
+      <div className=" px-4 md:pt-24 md:px-64 pt-24 bg-brownColor md:bg-primaryColor h-full w-full flex flex-col justify-center">
         <div className="md:hidden mb-5">
           <h1 className=" markazi text-[2.75rem] md:text-[4rem] text-pryColor">
             Little Lemon
@@ -35,15 +79,36 @@ const Reservation = () => {
         <div className=" flex items-center justify-between flex-col-reverse md:flex-row w-full h-full mt-5 md:overflow-y-hidden">
           <div className="  md:bg-secondaryColor md:py-12 mb-7 md:px-6  w-full md:max-w-[430px]">
             <div className=" flex items-center md:gap-8 gap-2 w-full  mb-6">
-              <SelectDates />
-              <SelectTime />
+              <SelectDates
+                selectedOption={selectedOption}
+                setSelectedOption={(date) => dispatch(setSelectedOption(date))}
+              />
+              <SelectTime
+                selectedTime={selectedTime}
+                setSelectedTime={(time) => dispatch(setSelectedTime(time))}
+              />
             </div>
-            <SelectDiner />
-            <SelectOccasion />
-            <SelectOptions />
+            <SelectDiner
+              selectedDiners={selectedDiners}
+              setSelectedDiners={(diners) =>
+                dispatch(setSelectedDiners(diners))
+              }
+            />
+            <SelectOccasion
+              selectedOccasion={selectedOccasion}
+              setSelectedOccasion={(occasion) =>
+                dispatch(setSelectedOccasion(occasion))
+              }
+            />
+            <SelectOptions
+              radioButtonSelection={radioButtonSelection}
+              setRadioButtonSelection={(selection) =>
+                dispatch(setRadioButtonSelection(selection))
+              }
+            />
             <div className="md:text-right flex justify-end w-full mt-8">
               <div className=" md:w-[50%] w-full text-right ">
-                <Button onClick={navigateToSignIn} text="Let's go" />
+                <Button onClick={navigateToConfirmationPage} text="Let's go" />
               </div>
             </div>
           </div>
@@ -60,6 +125,11 @@ const Reservation = () => {
             />
           </div>
         </div>
+        {showPopup && (
+          <div className="popup">
+            <p>Please fill all details</p>
+          </div>
+        )}
       </div>
     </div>
   );
